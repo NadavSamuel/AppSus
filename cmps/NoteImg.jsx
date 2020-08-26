@@ -2,7 +2,7 @@ export function NoteImg({note}){
 
 
     return (
-        <article className = "note note-img" key = {note.id}>
+        <article className = "col-sm-5 text-center card bg-white text-dark mr-3" key = {note.id}>
 
             <h2>{note.info.title}</h2>
             <p>{note.info.txt}</p>

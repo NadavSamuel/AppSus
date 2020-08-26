@@ -14,7 +14,8 @@ export function DeterminNotesType({notes}){
             // return //...some default error view
             }
     })
-    return <section>
+    
+    return <section className = "row">
     {arrangedNotes}
     </section>
 }

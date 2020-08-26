@@ -4,7 +4,8 @@ export const NoteService = {
     // save,
     // getEmpty,
     removeNote,
-    getById
+    getById,
+    AddNote
 
 }
 var notes = [
@@ -45,6 +46,18 @@ var notes = [
     // function getEmpty() {
     //     return { name: '', power: 0 };
     // }
+    function createNote(noteDetails){
+        return {
+            id:makeId(),
+           
+        }
+
+    }
+    function AddNote(noteDetails){
+        const note = createNote(noteDetails)
+        notes.push(note)
+
+    }
 
 
 
