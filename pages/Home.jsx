@@ -4,7 +4,7 @@ export class Home extends React.Component {
 
     render() {
         return (
-            <section>
+            <section  className ="text-white text-center">
                 <h1>AppSus!</h1>
                 <header><h2>Welcome to the AppSus</h2></header>
 {/*             go to the mail!!! <Link to="/mail">Click here</Link>
