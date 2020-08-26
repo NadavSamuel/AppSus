@@ -6,7 +6,7 @@ function _NavBar(props) {
         props.history.goBack()
     }
     return (
-        <nav className="nav-bar">
+        <nav className="navbar navbar-expand">
             <NavLink exact activeClassName='active-nav' to="/">Home</NavLink>|
             <NavLink activeClassName='active-nav' to="/mail">My Mail</NavLink>|
             <NavLink activeClassName='active-nav' to="/notes">My Notes</NavLink>|
