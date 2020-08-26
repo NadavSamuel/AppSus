@@ -1,26 +1,26 @@
 import { NoteService } from '../services/note-service.js'
-import { Notes } from '../cmps/Notes.jsx'
+import { DynamicNotes } from '../cmps/DynamicNotes.jsx'
 
 export class MyNotes extends React.Component {
     state = {
-        notesToDisplay: []
+        notes: []
     }
     componentDidMount() {
-        this.getNotesToDisplay()
+        this.loadNotes()
     }
 
-    getNotesToDisplay = () => {
+    loadNotes = () => {
         NoteService.query()
             .then(notes => {
                 // console.log(notes)
-                this.setState({ notesToDisplay: notes })
+                this.setState({ notes: notes })
             })
     }
     render() {
         return (
             <section className="text-white">
                 <h1>MyNotes!</h1>
-                <Notes notesForDisplay={this.state.notesToDisplay}/>
+                <DynamicNotes notes={this.state.notes}/>
 
             </section>
         )

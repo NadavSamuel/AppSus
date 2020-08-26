@@ -5,4 +5,42 @@ body{
     height: 100vh;
     height: 100vw;
     
+    
+}
+.welcome{
+    color: #ececec;
+    text-align: center;
+    width: 50%;
+    margin-inline-start: 25%;
+    background: #000000a3;
+
+}
+/* helpers */
+.grid {
+    display:grid
+}
+
+/* flex helpers */
+
+.flex{
+    display: flex;
+}
+.flex-column{
+    flex-direction: column;
+}
+.justify-center{
+    justify-content: center;
+}
+.align-center{
+    align-items: center;
+}
+.justify-between{
+    justify-content: space-between;
+
+}
+.nav-bar{
+    color: #ececec
+}
+.active-nav{
+    color:#30475e
 }
