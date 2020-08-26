@@ -1,4 +1,4 @@
-export const petService = {
+export const mailService = {
    
     query,
     getById,
@@ -8,13 +8,13 @@ export const petService = {
 
 
 const mails = [
-    { id: m101, subject: 'Wassap?', body: 'Pick up!', isRead: false, markedAsRead: false, sentAt: 1551133930594 },
-    { id: m102, subject: 'Hey?', body: 'HELLO!', isRead: false, markedAsRead: false, sentAt: 1551133930594 + 200 },
-    { id: m103, subject: 'dsd?', body: 'Hey!', isRead: false, markedAsRead: false, sentAt: 1551133930594 + 3000 }
+    { id: makeId(), from:'Nevo', subject: 'Wassap?', body: 'Pick up!', isRead: false, markedAsRead: false, sentAt: 1551133930594 },
+    { id: makeId(),from:'Alon', subject: 'Hey?', body: 'HELLO!', isRead: false, markedAsRead: false, sentAt: 1551133930594 + 200 },
+    { id: makeId(),from:'Meshi', subject: 'dsd?', body: 'Hey!', isRead: false, markedAsRead: false, sentAt: 1551133930594 + 3000 }
 ]
 
 function query() {
-    return Promise.resolve()
+    return Promise.resolve(mails)
 }
 
 
