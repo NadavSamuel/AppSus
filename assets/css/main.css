@@ -1,3 +1,5 @@
+@import './SideNavBar.css';
+
 body{
     background-image: url('../imgs/theme.jpg');
     background-repeat: no-repeat;
@@ -7,6 +9,7 @@ body{
     
     
 }
+
 /* Headers */
 .background-headline{
     background: #0000006e;

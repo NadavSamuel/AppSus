@@ -1,6 +1,6 @@
 
 import { EmailPreview } from './EmailPreview.jsx'
-export function EmailList({ emails }) {
+export function EmailList({ emails,removeEmail }) {
 
     return (
         <div>
@@ -16,10 +16,9 @@ export function EmailList({ emails }) {
                 <tbody>
                     {
                         emails.map(email =>
-                                <EmailPreview email={email} key={email.id}>
+                                <EmailPreview email={email} removeEmail={removeEmail} key={email.id}>
                                 </EmailPreview>
                         )
-
                     }
                 </tbody>
             </table>
@@ -29,9 +28,3 @@ export function EmailList({ emails }) {
     )
 }
 
-function formatMailTime(unixTime) {
-    const dateObject = new Date(unixTime);
-    const humanDateFormat = dateObject.toLocaleString();
-    return humanDateFormat;
-
-}
