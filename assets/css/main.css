@@ -7,6 +7,40 @@ body{
     
     
 }
+/* Headers */
+.background-headline{
+    background: #0000006e;
+    margin: 0 25%;
+}
+/* Notes */
+
+/* Notes container */
+.notes-container{
+    min-width:95%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    /* grid-auto-rows:200px; */
+    gap:30px;
+    margin:10px;
+}
+.note{
+    background:#292b2c;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+}
+.text-note{
+    min-height: 300px;
+}
+/* .img-note{
+    grid-column:span 2;
+} */
+
+/* delete btn */
+.delete-btn{
+    width:30px
+}
 /* .welcome{
     color: #ececec;
     text-align: center;
@@ -46,5 +80,8 @@ body{
 }
  */
  .img{
-     max-width:100%
+     /* max-width:100%;
+     max-height: 170px */
+     width: 100%;
+    height: 50%;
  }

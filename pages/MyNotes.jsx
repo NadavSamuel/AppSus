@@ -29,8 +29,8 @@ export class MyNotes extends React.Component {
 
                 {/* {this.state.isAddNoteOpen &&<AddNote/>} */}
                 <AddNote loadNotes={this.loadNotes}/>
-                <h1 className="text-center">MyNotes!</h1>
-                <DynamicNotes notes={this.state.notes}/>
+                <h1 className="text-center background-headline">MyNotes!</h1>
+                <DynamicNotes loadNotes={this.loadNotes} notes={this.state.notes}/>
 
             </section>
         )

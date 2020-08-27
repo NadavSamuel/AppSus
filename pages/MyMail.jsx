@@ -26,7 +26,7 @@ export class MyMail extends React.Component {
     render() {
         const emails = this.getMailsForDisplay();
         return (
-            <section className="text-white">
+            <section className="text-white background-headline">
                 <h1>MyMail!</h1>
              <EmailList emails ={emails}/>
             </section>

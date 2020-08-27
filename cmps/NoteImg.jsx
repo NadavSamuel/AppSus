@@ -1,12 +1,14 @@
-export function NoteImg({note}){
+import {DeleteBtn} from './Deletebtn.jsx'
+
+export function NoteImg({note,loadNotes}){
 
 
     return (
-        <article className = "col-sm-5 text-center card bg-white text-dark mr-3" key = {note.id}>
-
+        <article className = "note img-note" key = {note.id}>
+            <DeleteBtn noteId= {note.id} loadNotes={loadNotes}/>
             <h2>{note.info.title}</h2>
             <p>{note.info.txt}</p>
-            <img src={note.info.url}></img>
+            <img className="img" src={note.info.url}></img>
         </article>
 
     )

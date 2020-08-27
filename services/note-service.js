@@ -5,10 +5,11 @@ export const NoteService = {
     // getEmpty,
     removeNote,
     getById,
-    AddNote
+    AddNote,
+    deleteNote
 
 }
-var notes = [
+var notes = getNotes() ||[
     {
         id : makeId(),
         type: "NoteText",
@@ -49,6 +50,11 @@ var notes = [
     function createNote(noteDetails){
         return {
             id:makeId(),
+            type:noteDetails.type,
+            info:{
+                ...noteDetails
+            }
+
            
         }
 
@@ -56,8 +62,22 @@ var notes = [
     function AddNote(noteDetails){
         const note = createNote(noteDetails)
         notes.push(note)
+        saveNotes()
+        return Promise.resolve('note added')
 
     }
+    function saveNotes() {
+        localStorage.setItem('notes', JSON.stringify(notes))
+      }
+      
+      function getNotes() {
+        var val = localStorage.getItem('notes')
+        return JSON.parse(val)
+      }
+      function deleteNote(noteId){
+        notes = notes.filter(notes => notes.id !== noteId)
+        saveNotes()
+        }
 
 
 
