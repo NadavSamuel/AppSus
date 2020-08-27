@@ -16,13 +16,10 @@ export function EmailList({ emails }) {
                 <tbody>
                     {
                         emails.map(email =>
-                            <tr key={email.id}>
-                                <th scope="row">{email.from}</th>
-                                <td>{email.subject}</td>
-                                <td>{formatMailTime(email.sentAt)}</td>
-                                <td><button type="button" className="btn btn-labeled btn-danger"><i class="fa fa-trash"></i></button> <span className="fa fa-star"></span></td>
-                            </tr>
+                                <EmailPreview email={email} key={email.id}>
+                                </EmailPreview>
                         )
+
                     }
                 </tbody>
             </table>

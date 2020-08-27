@@ -8,9 +8,9 @@ export const mailService = {
 
 
 const mails = [
-    { id: makeId(), from:'Nevo', subject: 'Wassap?', body: 'Pick up!', isRead: false, markedAsRead: false, sentAt: 1551133930594 },
-    { id: makeId(),from:'Alon', subject: 'Hey?', body: 'HELLO!', isRead: false, markedAsRead: false, sentAt: 1551133930594 + 200 },
-    { id: makeId(),from:'Meshi', subject: 'dsd?', body: 'Hey!', isRead: false, markedAsRead: false, sentAt: 1551133930594 + 3000 }
+    { id: makeId(), from:'Nevo', subject: 'Wassap?', body: 'Pick up!', isRead: false, isStarred: false, sentAt: 1551133930594 },
+    { id: makeId(),from:'Alon', subject: 'Hey?', body: 'HELLO!', isRead: false, isStarred: false, sentAt: 1551133930594 + 200 },
+    { id: makeId(),from:'Meshi', subject: 'dsd?', body: 'Hey!', isRead: false, isStarred: false, sentAt: 1551133930594 + 3000 }
 ]
 
 function query() {
