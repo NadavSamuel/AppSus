@@ -15,7 +15,7 @@ var notes = getNotes() ||[
     {
         id : makeId(),
         type: "NoteText",
-        isPinned: true,
+        isPinned: false,
         info: {
             title:'Yeah!!!',
             txt: "Fullstack Me Baby!"
@@ -24,6 +24,8 @@ var notes = getNotes() ||[
     {
         id : makeId(),
         type: "NoteImg",
+        isPinned: true,
+
         info: {
             url: '../assets/imgs/keypeele.gif',
             title: "Me playing Mi",
@@ -63,6 +65,8 @@ var notes = getNotes() ||[
     }
     function addNote(noteDetails){
         const note = createNote(noteDetails)
+        // let todos =  note.info.todos
+        // if(todos) todos = todos.split(',')
         notes.push(note)
         saveNotes()
         return Promise.resolve('note added')
@@ -78,9 +82,6 @@ var notes = getNotes() ||[
         noteToEdit.info = {...newNoteInfo}
         saveNotes()
         return Promise.resolve('note edited')
-
-
-
     }
       
       function getNotes() {
@@ -91,6 +92,7 @@ var notes = getNotes() ||[
         notes = notes.filter(notes => notes.id !== noteId)
         saveNotes()
         }
+       
         function getEmpty(){
             return{
                 id: '',

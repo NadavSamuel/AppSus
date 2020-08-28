@@ -5,11 +5,15 @@ export class NoteText extends React.Component {
         isEdit:false
     }
     openEditModal= () =>{
+        if(this.state.isEdit) return
         this.setState({isEdit:true})
     }
-    closeEditModal= () =>{
+    toggleEditModal= (ev) =>{
+        ev.stopPropagation()
+        console.log(this.state.isEdit)
         this.setState({isEdit:false})
     }
+
    
 
 
@@ -21,7 +25,7 @@ export class NoteText extends React.Component {
                 <h2>{note.info.title}</h2>
                 <p>{note.info.txt}</p>
                 {/* <button onClick={this.openEditModal}>Edit</button> */}
-                {this.state.isEdit&&<Modal note={note} closeEditModal={this.closeEditModal} />}
+                {this.state.isEdit&&<Modal note={note}   toggleEditModal={this.toggleEditModal} />}
             </article>
 
         )
