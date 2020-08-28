@@ -1,7 +1,7 @@
 
 import { emailService } from '../services/email-service.js'
-import { EmailList } from '../cmps/mail-app/EmailList.jsx';
-import { SideNavBar } from '../cmps/mail-app/SideNavBar.jsx'
+import { StarButton } from '../cmps/mail-app/StarButton.jsx';
+import { SideMenuFilter } from '../cmps/mail-app/SideMenuFilter.jsx';
 
 export class MyMail extends React.Component {
     state = {
@@ -19,27 +19,68 @@ export class MyMail extends React.Component {
             })
             .catch(err => console.log(err));
     }
-    removeEmail = (emailId) => {
-        emailService.remove(emailId)
-        this.loadEmails();
+
+    handleDelete = email => {
+        const emails = this.state.emails.filter(em => em.id !== email.id);
+        this.setState({ emails })
+
+    }
+    handleStar = email =>{
+        //Toggling the isStarred Property of an email in which a star button was clicked
+        const emails = [...this.state.emails];
+        const index = emails.indexOf(email);
+        emails[index] = {...emails[index]};
+        //Here is the toggeling itself
+        emails[index].isStarred =!emails[index].isStarred;
+        this.setState({emails})
     }
 
-    getMailsForDisplay() {
-        const emails = this.state.emails.filter(email => email.subject.toLowerCase().includes(this.state.filterBy.toLowerCase()))
-        return emails;
-    }
 
     render() {
-        const emails = this.getMailsForDisplay();
+        const { length: count } = this.state.emails;
         return (
-            <main className="mail-panel">
-            <section className="text-white background-headline">
-                <EmailList emails={emails} removeEmail={this.removeEmail} />
-            </section>
-            <section>
-                <SideNavBar ></SideNavBar>
-            </section>
-            </main>
+            <div className="row">
+                <div className="col-2">
+                    <SideMenuFilter></SideMenuFilter>
+                </div>
+                <main className="container">
+                    <h1>My Mails</h1>
+                    <p>Displaying a total of {count} emails</p>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>From</th>
+                                <th>Subject</th>
+                                <th>Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.emails.map(email => (
+                                <tr key={email.id}>
+                                    <td>{email.from}</td>
+                                    <td>{email.subject}</td>
+                                    <td>{formatMailTime(email.sentAt)}</td>
+                                    <td>
+                                        <button type="button" className="btn btn-labeled btn-danger" onClick={() => this.handleDelete(email)}>
+                                            <i className="fa fa-trash"></i>
+                                        </button>
+                                        <StarButton isStarred={email.isStarred} onClick ={()=>this.handleStar(email)}></StarButton>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </main>
+            </div>
+
         )
     }
+}
+
+function formatMailTime(unixTime) {
+    const dateObject = new Date(unixTime);
+    const humanDateFormat = dateObject.toLocaleString();
+    return humanDateFormat;
+
 }

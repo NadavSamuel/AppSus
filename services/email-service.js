@@ -3,7 +3,9 @@ export const emailService = {
     query,
     getById,
     makeId,
-    remove
+/*     remove, */
+/*     like, */
+/*     open, */
 
 }
 
@@ -34,7 +36,15 @@ function getById(emailId) {
     return Promise.resolve(email)
 }
 
-function remove(emailId) {
+/* function remove(emailId) {
    emails = emails.filter(email => email.id !== emailId)
    console.log(emails)
 }
+
+function star(emailId){
+    emails[emailId].isStarred = true;
+}
+
+function read(emailId){
+    emails[emailId].isRead = true;
+} */

@@ -1,20 +1,38 @@
 @import './SideNavBar.css';
+html{
+    height: 100%;
+}
 
 body{
     background-image: url('../imgs/theme.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
-    height: 100vw;
-    
+    height: 100%;
+    background-size: cover;
     
 }
+h1{
+    font-size: 5rem;
+  text-align: center;
+height:10vh;
+line-height: 10vh;
+  color: #fcedd8;
+     font-family: 'Niconne', cursive;
+  font-weight: 5;
+text-shadow: 5px 5px 0px #eb452b, 
+            10px 10px 0px #efa032, 
+            15px 15px 0px #46b59b, 
+            20px 20px 0px #017e7f, 
+            25px 25px 0px #052939, 
+            30px 30px 0px #c11a2b;
+}
+
 
 /* Headers */
 .background-headline{
     background: #0000006e;
     margin: 0 25%;
-}
+} */
 /* Notes */
 
 /* Notes container */
