@@ -6,6 +6,7 @@ import { Home } from './pages/Home.jsx'
 import { NavBar } from './cmps/NavBar.jsx'
 import { EmailDetails } from './pages/EmailDetails.jsx'
 import { EmailCompose } from './pages/EmailCompose.jsx'
+// import {Footer} from './cmps/Footer.jsx'
 
 export class App extends React.Component {
 
@@ -25,6 +26,7 @@ export class App extends React.Component {
                             <Route component={Home} path="/" />
                         </Switch>
                     </main>
+                    {/* <Footer/> */}
 
                 </div>
             </Router>

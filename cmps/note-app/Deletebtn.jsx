@@ -8,6 +8,6 @@ export function DeleteBtn({noteId,loadNotes}){
    }
 
     return(
-        <button className="delete-btn" onClick={onDeleteNote}>X</button>
+        <button className="btn-danger delete-btn" onClick={onDeleteNote}><i className="fa fa-trash"></i></button>
     )
 }

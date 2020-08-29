@@ -41,7 +41,7 @@ export class EditNote extends React.Component {
                     </div>
                     <div className="modal-btns">
                     <button className="btn btn-primary" onClick={ ()=>{this.onEditNote(event)}}>Edit</button>
-                    <button onClick={this.props.toggleEditModal}>Close</button>
+                    <button className="btn btn-danger" onClick={this.props.toggleEditModal}>Close</button>
                     </div>
 
                 </div>

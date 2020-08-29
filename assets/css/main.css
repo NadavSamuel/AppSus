@@ -1,6 +1,6 @@
 
 html{
-    height: 100%;
+    min-height: 100%;
 }
 
 body{
@@ -8,7 +8,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
-    background-size: cover;
+    background-position: center ;
+    /* background-size: cover; */
     
 }
 .mail{
@@ -31,6 +32,9 @@ line-height: 10vh;
      font-family: 'Niconne', cursive;
   font-weight: 5;
 text-shadow: 5px 5px 0px #eb452b;
+}
+.note p{
+    text-align:start
 }
 
 
@@ -89,7 +93,7 @@ text-shadow: 5px 5px 0px #eb452b;
 }
 
 .modal-content1 {
-    background: white;
+    background: #ffffff73;
     max-width: 90%;
     min-width: 80%;
     min-height: 400px;
@@ -118,14 +122,23 @@ text-shadow: 5px 5px 0px #eb452b;
     background-color:white;
     color:#292b2c
 }
+.new-note-container{
+    display: flex;
+    justify-content: center;
+}
+
 .new-note{
-    max-width: 60%;
-    margin-inline-start: 25%;
+    width: 423px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 25px;
     margin-bottom: 25px;
+}
+@media (min-width:500px){
+    .new-note{
+        width: 535px;
+    }
 }
 .new-note-inputs{
     width: 300px;
@@ -139,12 +152,34 @@ text-shadow: 5px 5px 0px #eb452b;
     text-align: center !important;
 
 }
-.note-type-select{
-    width: 20%;
+.new-note-type-select{
+    width: 115px;
     align-self:start;
 }
 .add-btn{
     width:50px
+}
+.filter-btns-container{
+    display: flex;
+    justify-content: center;
+    background: #0000005e;
+}
+.filter-btns{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* .footer{
+    position: fixed;
+    
+} */
+.footer-content{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    
 }
 /* .welcome{
     color: #ececec;

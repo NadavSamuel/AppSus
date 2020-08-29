@@ -4,7 +4,8 @@ import {PinBtn} from './PinBtn.jsx'
 export class NoteText extends React.Component {
     state={
         isEdit:false,
-        isPinned:this.props.note.isPinned
+        isPinned:this.props.note.isPinned,
+        bcgColor:'#292b2c'
     }
     openEditModal= () =>{
         if(this.state.isEdit) return
@@ -22,23 +23,32 @@ export class NoteText extends React.Component {
 
         
     // }
+    changeBcgColor = (ev) =>{
+        ev.stopPropagation()
+        console.log(ev)
+        this.setState({bcgColor:ev.target.value})
 
-   
+
+    }
 
 
     render() {
+        const bcgColor = {
+            backgroundColor:this.state.bcgColor
+        }
         const note= this.props.note
         return (
-            <article onClick={this.openEditModal} className="note text-note" key={note.id}>
+            <article style={bcgColor} onClick={this.openEditModal} className="note text-note" key={note.id}>
                 <DeleteBtn noteId={note.id} loadNotes={this.props.loadNotes} />
                 {/* <PinBtn togglePinNote={this.props.togglePinNote} noteId={note.id} ></PinBtn> */}
                 <h2>{note.info.title}</h2>
                 <p>{note.info.txt}</p>
-
                 {this.state.isEdit&&<Modal note={note}   toggleEditModal={this.toggleEditModal} />}
-            </article>
+                
+                   </article>
 
         )
 
     }
+        //    onChange={() =>{this.changeBcgColor(event)}}></input>   
 }

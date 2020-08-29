@@ -1,9 +1,9 @@
 import { NoteService } from '../services/note-service.js'
-import { DynamicNotes } from '../cmps/DynamicNotes.jsx'
-import { Modal } from '../cmps/Modal.jsx'
-import { NewNote } from '../cmps/NewNote.jsx'
-import { FilterNotes } from '../cmps/FilterNotes.jsx'
-import { PinnedNotes } from '../cmps/NotesDisplay.jsx'
+import { DynamicNotes } from '../cmps/note-app/DynamicNotes.jsx'
+import { Modal } from '../cmps/note-app/Modal.jsx'
+import { NewNote } from '../cmps/note-app/NewNote.jsx'
+import { FilterNotes } from '../cmps/note-app/FilterNotes.jsx'
+import { PinnedNotes } from '../cmps/note-app/NotesDisplay.jsx'
 
 
 export class MyNotes extends React.Component {
@@ -19,7 +19,7 @@ export class MyNotes extends React.Component {
     loadNotes = (filterValue = this.state.filter) => {
         NoteService.query()
             .then(notes => {
-                this.setState({ notes: this.filterNotes(notes, filterValue), filter: filterValue }, () => console.log(notes))
+                this.setState({ notes: this.filterNotes(notes, filterValue), filter: filterValue })
             })
     }
     // togglePinNote = (noteId, ev) => {
@@ -64,7 +64,9 @@ export class MyNotes extends React.Component {
             <section className="text-white">
 
                 <h1 className="text-center background-headline">MyNotes!</h1>
+                <section className="new-note-container">
                 <NewNote loadNotes={this.loadNotes} />
+                </section>
                 <FilterNotes changeFilter={this.onChangeFilter} />
                 <DynamicNotes togglePinNote={this.togglePinNote} loadNotes={this.loadNotes} notes={this.state.notes} addNote={this.state.isAddNote} />
 

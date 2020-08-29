@@ -1,5 +1,5 @@
 import {NoteImgAdd} from './NoteImgAdd.jsx'
-import {NoteService} from '../services/note-service.jsx'
+import {NoteService} from '../../services/note-service.js'
 export class AddNote extends React.Component {
     state = {
         id: null,
