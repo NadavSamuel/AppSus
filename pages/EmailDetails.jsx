@@ -66,8 +66,8 @@ export class EmailDetails extends React.Component {
 <div className="col-4 py-3">
     <h1>My Email!</h1>
     <Link to="/mail/edit"><button type="button" className="btn btn-primary btn-block" >Compose Email</button></Link>
-    <button type="button" className="btn btn-info btn-block" onClick={() => this.loadEmails()}>Inbox</button>
-    <button type="button" className="btn btn-success btn-block" onClick={() => this.handleOpenedFilter()}>Opened Emails</button>
+    <button type="button" className="btn btn-info btn-block" onClick={() => this.loadEmails()}>All Emails</button>
+    <button type="button" className="btn btn-success btn-block" onClick={() => this.handleOpenedFilter()}>Marked as open Emails</button>
 </div>
 <div className="main col-8 h-100 py-3">
     <main className="container">

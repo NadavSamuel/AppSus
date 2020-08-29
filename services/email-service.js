@@ -38,6 +38,7 @@ function getById(emailId) {
     return Promise.resolve(email)
 }
 
+
 function getNextPrev(emailId) {
     const emailIdx = emails.findIndex(email => email.id === emailId)
     const nextEmail = emails[emailIdx + 1] || emails[0]
@@ -49,19 +50,28 @@ function getNextPrev(emailId) {
 }
 
 function save(emailToSave) {
-    emailToSave.id ? _reply(emailToSave) : _compose(emailToSave)
+    emailToSave.id ? _composeReply(emailToSave) : _compose(emailToSave)
 }
 function _compose(_email) {
     const emailToCompose = {
         ..._email,
-        id: makeId()
+        id: makeId(),
+        sentAt:Date.now(),
+        subject:_email.subject
     }
     emails = [emailToCompose, ...emails]
 }
-function _reply(emailToReply) {
-    emails = emails.map(_email => _email.id === emailToReply.id ? emailToReply : _email)
-    return emailToReply
+function _composeReply(_email) {
+    const emailToCompose = {
+        ..._email,
+        id: makeId(),
+        sentAt:Date.now(),
+        subject:'Re:'+_email.subject,
+        isRead:false
+    }
+    emails = [emailToCompose, ...emails]
 }
+
 
 function makeId(length = 5) {
     var txt = '';
