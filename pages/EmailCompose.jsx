@@ -25,19 +25,34 @@ export class EmailCompose extends React.Component {
 
     render() {
         return (
-            <div className='card mail-edit' style={{ width: '30rem', height:'30rem'}}>
-                <input name="subject" value={ this.state.email.subject } 
-                    placeholder="Subject:" type="text"
-                    onChange={ this.onInputChange }
-                />
-                <input name="body" value={ this.state.email.body }
-                    placeholder="Body" type="text"  width={"48"} height={"48"}
-                    onChange={ this.onInputChange }
-                />
-                <button onClick={ this.addEmail }>Send!</button>
+            <div className='card' style={{ width: '30rem', height: '20rem' }}>
+                <div className='card-header'>
+                    <h2>Mail:</h2>
+                </div>
+                <div className="card-body">
+                    <input name="subject" value={this.state.email.subject}
+                        placeholder="Subject:" type="text"
+                        onChange={this.onInputChange}
+                    /><br></br>
+                    <input name="body" value={this.state.email.body}
+                        placeholder="Body" type="text" class="resizedTextbox"
+                        onChange={this.onInputChange}
+                    />
+                </div>
+                <button onClick={this.addEmail} class="btn btn-danger">Send!</button>
             </div>
 
 
         )
     }
 }
+
+{/* <div className='card' style={{ width: '30rem', height: '20rem' }}>
+    <div className='card-header'>
+        <h3>From: {email.from}</h3>
+    </div>
+    <div className="card-body">
+        <h4>Subject: {email.subject}</h4>
+        <p>{email.body}</p>
+    </div>
+</div> */}

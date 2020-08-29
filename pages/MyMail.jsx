@@ -1,7 +1,9 @@
 const { Link } = ReactRouterDOM
 import { emailService } from '../services/email-service.js'
+import {storageService} from '../services/storage-service.js'
 import { StarButton } from '../cmps/mail-app/StarButton.jsx';
 import { EmailFilter } from '../cmps/mail-app/EmailFilter.jsx';
+import { EmailCompose } from './EmailCompose.jsx';
 
 
 export class MyMail extends React.Component {
@@ -48,14 +50,15 @@ export class MyMail extends React.Component {
         this.setState({ emails })
 
     }
-    handleStar = email => {
+    handleOpening = email => {
         //Toggling the isStarred Property of an email in which a star button was clicked
         const emails = [...this.state.emails];
         const index = emails.indexOf(email);
         emails[index] = { ...emails[index] };
-        //Here is the toggeling itself
-        emails[index].isStarred = !emails[index].isStarred;
+        console.log(emails[index])
+        emails[index].isRead =! emails[index].isRead
         this.setState({ emails })
+        console.log(this.state.emails)
     }
 
     setFilter = (filterBy) => {
@@ -63,11 +66,13 @@ export class MyMail extends React.Component {
         this.setState({ filterBy })
         const emails = this.state.emails.filter(em => em.subject.toLowerCase().includes(this.state.filterBy.toLowerCase()))
         this.setState({ emails })
+        console.log(this.state.emails)
     }
 
 
     render() {
         const { length: count } = this.state.emails;
+        const { length: unMarkedCount } = this.state.emails.filter(em => em.isRead === false);
         return (
             <div className="row grow w-100">
                 <div className="col-12 py-3">
@@ -75,14 +80,16 @@ export class MyMail extends React.Component {
                 </div>
                 <div className="col-4 py-3">
                     <h1>My Email!</h1>
-                    <Link to="/mail/edit"><button type="button" className="btn btn-primary btn-block" >Compose Email</button></Link>
-                    <button type="button" className="btn btn-info btn-block" onClick={() => this.loadEmails()}>Inbox</button>
-                    <button type="button" className="btn btn-success btn-block" onClick={() => this.handleOpenedFilter()}>Opened Emails</button>
+                    <Link to="/mail/edit"><button type="button" className="btn btn-primary btn-block" >Compose Email</button></Link><br></br>
+                    <button type="button" className="btn btn-info btn-block" onClick={() => this.loadEmails()}>All Mails</button>
+                    <button type="button" className="btn btn-success btn-block" onClick={() => this.handleOpenedFilter()}>Marked As Read</button>
+                    <button type="button" className="btn btn-danger btn-block" onClick={() => this.handleUnOpenedFilter()}>Marked As Unread</button>
                 </div>
                 <div className="main col-8 h-100 py-3">
                     <main className="container">
-                        <h2>Hello</h2>
-                        <p className="p-3 mb-2 bg-dark text-white">Displaying a total of <span className="text-primary">{count}</span> emails</p>
+
+                        <p className="p-3 mb-2 bg-dark text-white">Displaying a total of <span className="text-danger">{unMarkedCount}</span> emails marked as unread</p>
+                        <EmailFilter location={this.props.location} onFilter={this.setFilter}></EmailFilter>
                         <table className="table">
                             <thead>
                                 <tr className="p-3 mb-2 bg-warning text-dark">
@@ -99,10 +106,13 @@ export class MyMail extends React.Component {
                                         <td>{email.subject}</td>
                                         <td>{formatMailTime(email.sentAt)}</td>
                                         <td>
+                                            <button type="button" className="btn btn-labeled btn-success" onClick={() => this.handleOpening(email)}>
+                                            <i class={email.isRead ? "fa fa-check": "fa fa-circle-o"} aria-hidden="true"></i>
+                                            </button>
                                             <button type="button" className="btn btn-labeled btn-danger" onClick={() => this.handleDelete(email)}>
                                                 <i className="fa fa-trash"></i>
                                             </button>
-                                            <Link to={`/mail/${email.id}`} className="btn btn-info">
+                                            <Link to={`/mail/${email.id}`} className="btn btn-info" onClick={() => this.handleOpening(email)}>
                                                 <i className="fa fa-envelope"></i>
                                             </Link>
                                         </td>
