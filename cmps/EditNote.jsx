@@ -33,11 +33,16 @@ export class EditNote extends React.Component {
       }
     render() {
         return (
-            <div>
+            <div className ="modal-content-inside">
+                <div className="modal-inputs">
                     <input type="text" className="form-control" id="title" placeholder="title"  value={this.state.title} onChange={this.onInputChange}></input>
                     <input type="text" className="form-control" placeholder="text" id="txt" value={this.state.txt} onChange={this.onInputChange}></input>
                     {this.state.type === "NoteImg" && <NoteImgAdd url={this.state.url} onInputChange={this.onInputChange} />}
+                    </div>
+                    <div className="modal-btns">
                     <button className="btn btn-primary" onClick={ ()=>{this.onEditNote(event)}}>Edit</button>
+                    <button onClick={this.props.toggleEditModal}>Close</button>
+                    </div>
 
                 </div>
 

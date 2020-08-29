@@ -4,7 +4,9 @@ import { Modal } from './Modal.jsx'
 export class NoteTodos extends React.Component {
     state = {
         // isEdit: false,
-        todos: [{ text: '', isMarked: false }]
+        todos: [{ text: '', isMarked: false }],
+        isPinned:this.props.note.isPinned
+
     }
     componentDidMount() {
         const currTodos = this.props.note.info.todos.split(',')

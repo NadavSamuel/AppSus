@@ -1,11 +1,11 @@
 import {DeterminNotesType}  from './DeterminNotesType.jsx'
 // import {NewNote} from '../cmps/NewNote.jsx'
 
-export function DynamicNotes({notes,loadNotes,addNote}){
+export function DynamicNotes({notes,loadNotes,togglePinNote}){
 
     return (
-        <section className= "notes-container">
-       <DeterminNotesType notes={notes} loadNotes={loadNotes}/>
+        <section >
+       <DeterminNotesType togglePinNote={togglePinNote} notes={notes} loadNotes={loadNotes}/>
       </section>
 
     )

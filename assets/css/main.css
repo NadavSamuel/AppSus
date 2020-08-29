@@ -36,15 +36,16 @@ text-shadow: 5px 5px 0px #eb452b,
 /* Notes */
 
 /* Notes container */
-.notes-container{
-    min-width:95%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    /* grid-auto-rows:200px; */
-    gap:30px;
-    margin:10px;
+
+.all-notes{
+    min-width:95% ;
+    display: grid ;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr))  ;
+    gap:30px ;
+    margin:10px ;
 }
 .note{
+    cursor: pointer;
     background:#292b2c;
     display: flex;
     flex-direction: column;
@@ -91,11 +92,53 @@ text-shadow: 5px 5px 0px #eb452b,
     left: 50%;
     margin-left: -37.5%;
     top: 18%;
+    display: flex;
+    justify-content: center;
+}
+.modal-content-inside{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.modal-inputs{
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .done-todo{
     text-decoration: line-through;
     background-color:white;
     color:#292b2c
+}
+.new-note{
+    max-width: 60%;
+    margin-inline-start: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.new-note-inputs{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
+}
+.title-input{
+    padding: 30px !important;
+    text-align: center !important;
+
+}
+.note-type-select{
+    width: 20%;
+    align-self:start;
+}
+.add-btn{
+    width:50px
 }
 /* .welcome{
     color: #ececec;

@@ -1,8 +1,10 @@
 import { DeleteBtn } from './Deletebtn.jsx'
 import { Modal } from './Modal.jsx'
+import {PinBtn} from './PinBtn.jsx'
 export class NoteText extends React.Component {
     state={
-        isEdit:false
+        isEdit:false,
+        isPinned:this.props.note.isPinned
     }
     openEditModal= () =>{
         if(this.state.isEdit) return
@@ -10,9 +12,16 @@ export class NoteText extends React.Component {
     }
     toggleEditModal= (ev) =>{
         ev.stopPropagation()
-        console.log(this.state.isEdit)
         this.setState({isEdit:false})
     }
+    // pinNote= () =>{
+    //     this.setState({isPinned:!this.state.isPinned})
+    //     console.log(this.state)
+    //     // this.props.reRender()
+    //     this.props.loadNotes()
+
+        
+    // }
 
    
 
@@ -22,9 +31,10 @@ export class NoteText extends React.Component {
         return (
             <article onClick={this.openEditModal} className="note text-note" key={note.id}>
                 <DeleteBtn noteId={note.id} loadNotes={this.props.loadNotes} />
+                {/* <PinBtn togglePinNote={this.props.togglePinNote} noteId={note.id} ></PinBtn> */}
                 <h2>{note.info.title}</h2>
                 <p>{note.info.txt}</p>
-                {/* <button onClick={this.openEditModal}>Edit</button> */}
+
                 {this.state.isEdit&&<Modal note={note}   toggleEditModal={this.toggleEditModal} />}
             </article>
 

@@ -3,7 +3,9 @@ import { Modal } from './Modal.jsx'
 
 export class NoteImg extends React.Component {
     state = {
-        isEdit: false
+        isEdit: false,
+        isPinned:this.props.note.isPinned
+
     }
     openEditModal= () =>{
         if(this.state.isEdit) return

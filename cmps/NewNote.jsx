@@ -1,14 +1,16 @@
 import { NoteImgAdd } from './NoteImgAdd.jsx'
+import { NoteTextAdd } from './NoteTextAdd.jsx'
 import { NoteTodosAdd } from './NoteTodosAdd.jsx'
 import { NoteService } from '../services/note-service.jsx'
 export class NewNote extends React.Component {
     state = {
         id: null,
         type: "NoteText",
-        title: 'text',
-        txt: "txt",
-        url: "url",
-        todos:"todos(seperate by comma)"
+        title: '',
+        txt: "",
+        url: "",
+        todos:"",
+        isPinned:false
     }
     onInputChange = (ev) => {
 
@@ -25,18 +27,20 @@ export class NewNote extends React.Component {
 
     render() {
         return (
-            <div className="new-note=input">
-                <select className="note-type-select" id="type" onChange={this.onInputChange}>
+            <div className="new-note">
+                <select  className="note-type-select" id="type" onChange={this.onInputChange}>
                     <option value="NoteText">Text Note</option>
                     <option value="NoteImg">Image Note</option>
                     <option value="NoteTodos">Todos Note</option>
                 </select>
-                <input type="text" className="form-control" id="title" value={this.state.title} onChange={this.onInputChange}></input>
-                <input type="textarea" className="form-control" id="txt" value={this.state.txt} onChange={this.onInputChange}></input>
+                <div className="new-note-inputs">
+                <input placeholder="title"  type="text" className="form-control title-input" id="title" value={this.state.title} onChange={this.onInputChange}></input>
+                {this.state.type ==="NoteText" &&<NoteTextAdd txt={this.state.txt} onChange={this.onInputChange} />}
                 {this.state.type === "NoteImg" && <NoteImgAdd url={this.state.url} onInputChange={this.onInputChange} />} 
                 {this.state.type === "NoteTodos" && <NoteTodosAdd todos={this.state.todos} onInputChange={this.onInputChange} />} 
-                <button onClick={this.onAddNote}>Add
+                <button className="add-btn" onClick={this.onAddNote}>Add
                 </button>
+                </div>
 
             </div>
         )
