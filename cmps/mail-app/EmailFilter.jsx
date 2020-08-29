@@ -13,7 +13,6 @@ export class EmailFilter extends React.Component {
 
     render() {
         return <section className="email-filter item1">
-            <h2 className="subheader">MyEmail!</h2>
             <input value={ this.state.filterBy } type="text" placeholder="Search mails by subject"
                 onChange={ this.handleChange } />
         </section >
